@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap');
+
+/* Modal styles */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 0% 0% 0% 35% !important;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 33%;
+  border-radius: 15px !important;
+  padding: 5px 20px 20px 20px !important;
+  /* Could be more or less, depending on screen size */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+.btn {
+  background-color: dodgerblue;
+  color: white;
+  padding: 5px 40px !important;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+
+
+.nextButton {
+  text-align: center;
+}
+
+h2.title {
+  color: #334D6E"
+
+}
+
+
+
+
+
+.progressbar-wrapper {
+  background: #fff;
+  width: 100%;
+  padding-top: 1px;
+  padding-bottom: 40px;
+}
+
+.progressbar li {
+  list-style-type: none;
+  /* width: 20%; */
+
+  float: left;
+  font-size: 12px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  color: #109CF1;
+}
+
+.progressbar li:before {
+  width: 26px;
+  height: 26px;
+  content: "";
+  line-height: 25px;
+  border: 1px solid #109CF1;
+  display: block;
+  text-align: center;
+  margin: 0 auto 3px auto;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+  background-color: #fff;
+}
+
+.progressbar li:after {
+  /* width: 100%; */
+  width: 190px;
+  height: 2px;
+  content: '';
+  position: absolute;
+  background-color: #7d7d7d;
+  top: 12px;
+  left: 0%;
+  z-index: 0;
+}
+
+.progressbar li:first-child:after {
+  content: none;
+}
+
+.progressbar li.active {
+  color: green;
+  font-weight: bold;
+  margin-left: 19px;
+}
+
+
+.progressbar li.active:before {
+  border-color: #109CF1;
+  background: #109CF1;
+  color: white;
+}
+
+.progressbar li.active+li:after {
+  background-color: #109CF1;
+}
+
+.progressbar li.active:before {
+  background: #109CF1 url(user.svg) no-repeat center center;
+  background-size: 60%;
+}
+
+.progressbar li::before {
+  background: #fff url(user.svg) no-repeat center center;
+  background-size: 60%;
+}
+
+.progressbar {
+  counter-reset: step;
+}
+
+.progressbar li:before {
+  content: counter(step);
+  counter-increment: step;
+}
+
+
+
+
+
+.fieldtitle {
+  color: #7A8798;
+  margin-bottom: 2px;
+}
+
+.name {
+  margin-bottom: 0px;
+}
+
+.firstname {
+  margin-bottom: 6px;
+}
+
+.nameleft {
+  padding-left: 0px !important;
+}
+
+.email {
+  padding-right: 30px !important;
+  padding-left: 30px !important;
+  margin-bottom: 6px;
+}
+
+.phone {
+  padding-right: 30px !important;
+  padding-left: 30px !important;
+  margin-bottom: 6px;
+}
+
+.team {
+  padding-right: 30px !important;
+  padding-left: 30px !important;
+  margin-bottom: 6px;
+}
+
+.nameborder {
+  border: 1px solid #e1e1e1;
+  border-radius: 6px;
+}
+
+.firstnameborder {
+  border: 1px solid #e1e1e1;
+  border-radius: 6px;
+}
+
+.emailborder {
+  border: 1px solid #e1e1e1;
+  border-radius: 6px;
+}
+
+.phoneborder {
+  border: 1px solid #e1e1e1;
+  border-radius: 6px;
+}
+
+.entreprise {
+  padding: 10px 20px 10px 0px;
+  border-radius: 6px;
+  border: 1px solid #dadada;
+  color: grey;
+  width: 172px;
+}
+
+.col-md-6.enter {
+  padding-right: 5px;
+}
+
+.col-md-6.dept {
+  padding-left: 5px;
+}
+
+.department {
+  padding: 10px 20px 10px 0px;
+  border-radius: 6px;
+  border: 1px solid #dadada;
+  color: grey;
+  width: 166px;
+}
+
+.teamborder {
+  padding: 10px 115px 10px 0px;
+  border-radius: 6px;
+  border: 1px solid #dadada;
+  color: grey;
+  width: 342px;
+}
+
+.designation {
+  padding: 10px 20px 10px 0px;
+  border-radius: 6px;
+  border: 1px solid #dadada;
+  color: grey;
+  width: 172px;
+}
+
+.date {
+  padding: 8px 10px 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #dadada;
+  width: 166px;
+}
+
+.col-md-6.desig {
+  padding-right: 5px;
+}
+
+.col-md-6.datewidth {
+  padding-left: 5px;
+}
+
+.leave {
+  padding-right: 30px !important;
+  padding-left: 30px !important;
+  margin-bottom: 6px;
+}
+
+.contract {
+  padding-right: 30px !important;
+  padding-left: 30px !important;
+  margin-bottom: 6px;
+}

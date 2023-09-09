@@ -1,0 +1,732 @@
+<script src="/javascripts/ag-grid-enterprise18.1.1.min.js"></script>
+<script src="/javascripts/ag-grid_custom_server_side_paging.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+
+<style>
+.ag-layout-normal.ag-root-wrapper-body{
+	width:auto;
+}
+.ag-theme-balham .ag-cell-label-container {
+  height: 100%;
+  /* width: max-content; */
+}
+
+.ag-theme-balham .ag-header-cell, .ag-theme-balham .ag-header-group-cell {
+		line-height: 20px !important;
+	}
+	.ag-paging-row-summary-panel,.ag-paging-page-summary-panel{
+		display:none;
+	}
+	
+	.ag-theme-balham button[ref="btFirst_custom"] {
+		background-color: transparent;
+		background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIgNEw4IDhsNCA0TTQuNSA0djgiIHN0cm9rZT0iIzdGOEM4RCIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==);
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 16px 16px;
+		height: 16px;
+		opacity: 0.87;
+		width: 16px;
+		overflow: hidden;
+		text-indent: 100%;
+		appearance: none;
+		border: 0;
+		opacity: 0.54;
+		padding: 0;
+	}
+	.ag-theme-balham button[ref="btPrevious_custom"] {
+		background-color: transparent;
+		background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNOSA0TDUgOGw0IDQiIHN0cm9rZT0iIzdGOEM4RCIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==);
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 16px 16px;
+		height: 16px;
+		opacity: 0.87;
+		width: 16px;
+		overflow: hidden;
+		text-indent: 100%;
+		appearance: none;
+		border: 0;
+		opacity: 0.54;
+		padding: 0;
+	}
+	
+	.ag-theme-balham button[ref="btNext_custom"] {
+		background-color: transparent;
+		background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNiAxMmw0LTQtNC00IiBzdHJva2U9IiM3RjhDOEQiIGZpbGw9Im5vbmUiLz48L3N2Zz4=);
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 16px 16px;
+		height: 16px;
+		opacity: 0.87;
+		width: 16px;
+		overflow: hidden;
+		text-indent: 100%;
+		appearance: none;
+		border: 0;
+		opacity: 0.54;
+		padding: 0;
+	}
+	
+	
+	.ag-theme-balham button[ref="btLast_custom"] {
+		background-color: transparent;
+		background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNCAxMmw0LTQtNC00bTcuNSAwdjgiIHN0cm9rZT0iIzdGOEM4RCIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==);
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 16px 16px;
+		height: 16px;
+		opacity: 0.87;
+		width: 16px;
+		overflow: hidden;
+		text-indent: 100%;
+		appearance: none;
+		border: 0;
+		opacity: 0.54;
+		padding: 0;
+	}
+	
+	.ag-theme-balham button[ref="btLast_custom"][disabled] {
+		opacity: 0.38;
+	}
+	
+	.ag-theme-balham button[ref="btLast_custom"][disabled] {
+		opacity: 0.38;
+	}
+	.ag-theme-balham button[ref="btLast_custom"][disabled] {
+		opacity: 0.38;
+	}
+	.ag-theme-balham button[ref="btLast_custom"][disabled] {
+		opacity: 0.38;
+	}
+	.select_for_ag{
+		font: 400 12px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;	
+		
+		background-color: #f3fcfd !important;
+		border: 1px solid #cccccc !important;
+		border-radius: 0px !important;
+		padding-bottom: 1px !important;
+		padding-top: 1px !important;
+		color: rgba(0, 0, 0, 0.54);
+	}
+	.ag-cell-focus{
+		background-color: #cce6ff !important;
+	}
+
+		/*new added*/
+	.ag-header {
+  		position: inherit;
+  	}
+  .ag-theme-balham .ag-header-cell-label .ag-header-cell-text{
+		width:100%;
+	}
+	.ag-filter{
+		position: inherit;
+		overflow: hidden;
+	}
+
+	h1 {
+		text-align: center;
+		color: #2d2d2d;
+	}
+
+	.buttonadd {
+		padding: 10px 15px 10px 15px;
+        background: #2AA7FF;
+		border: none;
+		border-radius: 8px;
+		color: white;
+		font-weight: bold;
+		margin-bottom: 10px;
+	}
+
+	.button_to{
+		text-align:end;
+	}
+
+	.edit {
+	background: #1d80c5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+	}
+
+	.delete {
+	background: #c5771d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+	}
+
+	.ag-header-viewport {
+    padding-top: 15px;
+    background: white;
+    }
+
+</style>
+
+<script>
+agGrid.LicenseManager.setLicenseKey(
+		'CompanyName=Antuit, Inc.,LicensedGroup=antuit.ai,LicenseType=MultipleApplications,LicensedConcurrentDeveloperCount=5,LicensedProductionInstancesCount=3,AssetReference=AG-010181,ExpiryDate=3_September_2021_[v2]_MTYzMDYyMzYwMDAwMA==ecfcddcc95aac3c2cd19cab7039cdcb5'
+		);
+</script>
+
+<script>
+
+function createNewDatasource(){
+				$.ajax({
+					type: "get",
+					url: "/all_user",
+					/*data: global_grid_query_str+"&limit="+limit,*/
+					success: function(msg){
+							var grid_data = msg; 
+							var rowsThisPage = grid_data["data"];  
+							total_aggrid_rows = parseInt(grid_data["total"]);
+							gridOptions.api.setRowData(rowsThisPage);
+							enableDisableButtons("enable");        
+					}
+				});
+			
+		}
+		var a=10;
+var columnDefs = [
+  {headerName: "", field: "image", cellRenderer:ImageCellRenderer, cellStyle: { 'border':'1px solid grey','border-radius':'50%', 'height':'50px', 'width':'50px', 'left':'70px', 'top': '5', } },
+
+  {headerName: "Name", field: "name",  cellStyle: {'font-weight':'bold' , 'color':'#666666','padding-top': '15px','font-size':'15px'}},
+
+  {headerName: "Email", field: "email", cellStyle: { 'padding-top': '15px', 'color':'#686868'}},
+
+  {headerName: "Department", field: "department", cellStyle: {'padding-top': '15px' , 'color':'#686868'}},
+
+  {headerName: "Edit", field: "id",
+  cellRenderer:params=>{
+	return "<button class='edit' onClick='handleClickEdit("+this.params+")'>Edit</button>" 
+  }, cellStyle: {'padding-top': '15px' , 'color':'#323C47'}
+  },
+
+  {headerName: "Delete", field: "id", cellRenderer:params=>{
+	return "<button class='delete' onClick='handleClickDelete()' >Delete</button>"
+  } , cellStyle: {'padding-top': '15px' , 'color':'#323C47'}}
+];
+function handleClickEdit(params){
+	console.log("params------------",params)
+}
+
+ImageCellRenderer.prototype.init = function(params) {
+	params=true
+  //console.log("params.value",params.value)
+  this.eGui = document.createElement('div');
+  var text = '';
+//    if(params.value) 
+   if(params) 
+   
+	text = '<span class="product_image"><img src="https://blog.hootsuite.com/wp-content/uploads/2021/07/free-stock-photos-03-scaled.jpeg" alt=" " style="width:50px;height:50px;"></span>';
+	this.eGui.innerHTML = text;
+   };
+
+function ImageCellRenderer(){
+	
+}
+
+ImageCellRenderer.prototype.getGui = function() {
+	return this.eGui;
+	};
+
+
+
+
+//function handleClickDelete(params){
+//	console.log("params------------",params)
+//}
+ 
+
+ function buttonRendererEdit(params) {
+	return "<button >Edit</button>"
+ }
+
+var gridOptions; 
+		gridOptions = 
+		{
+			columnDefs: columnDefs,
+			rowData: null,
+			enableSorting: true,
+			enableFilter: true,
+			rowSelection: 'multiple',
+			headerHeight: 50, 
+			rowHeight:60,
+			enableRangeSelection: true,			
+			enableStatusBar: false,
+			pagination: true,
+			// rowModelType : 'pagination',
+			suppressRowClickSelection:true,
+ 			onGridReady: function() {   }			
+		};
+        document.addEventListener('DOMContentLoaded', function() { 
+				var gridDiv = document.querySelector('#views'); 
+				new agGrid.Grid(gridDiv, gridOptions);  
+
+				 
+			});	
+            $(document).ready(function() {
+createNewDatasource();
+  });
+
+function createUser(){
+	$("#main").html("<iframe id='createUsers' src='/user/create' width='100%' height='500px' onload='resizeIframe(this)' frameborder='0'></iframe>");
+}
+
+</script>
+<body>
+
+<div class="main" style="margin-left: 75px;">
+<div id="main" style="height: 500px; width: 1200px;">
+<!-- <h1>Users List</h1> -->
+<div style="height: 50px;"></div>
+<%= button_to "Add", create_path, {method: 'get', class: "buttonadd"}%>
+<div id="views" class="ag-theme-balham"></div>
+</div>
+</div>
+
+</body>
+
+
+
+<!-- <div class="modal-dialog">
+						<div class="modal-content">
+							<div class="close_btn_icon modal-header">
+								<div class="modal-title h4">New worker</div>
+								<button type="button" class="close">
+									<span aria-hidden="true">x</span><span class="sr-only">Close</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="modalinnerbody" id="worker_add_modal_id">
+									<div class="informationtabs">
+										<div class="informationtabsinner">
+											<div class=" tabscounbox tabscounone">
+												<button class="tabscounbtn">
+													<span class="steponenum">1</span>
+													<span class="steponetick">
+														<i class="fa fa-check" aria-hidden="true">
+														</i>
+													</span>
+												</button>
+											</div>
+											<div class="tabsconnectrow"></div>
+											<div class=" tabscounbox tabscountwo"><button class="tabscounbtn">2</button>
+											</div>
+										</div>
+									</div>
+									<div class=" firstinformation">
+										<div class="innerbodydimension">
+											<div class="col-md-12">
+												<div class="row">
+													<div class="col-md-6">
+														<div class="row">
+															<div class="col-md-12">
+																<div class="input_field_inner"><label
+																		class="input_label input_label_color">Name</label><span
+																		class=""></span><input name="name" type="text"
+																		class="input__fields_property"
+																		id="worker_last_name" maxlength="" value="">
+																	<div class="col-md-12 errorClass error_div"></div>
+																</div>
+															</div>
+															<div class="col-md-12">
+																<div class="input_field_inner"><label
+																		class="input_label input_label_color">First
+																		name</label><span class=""></span><input
+																		name="firstName" type="text"
+																		class="input__fields_property"
+																		id="worker_fast_name" maxlength="" value="">
+																	<div class="col-md-12 errorClass error_div"></div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="user_add_img modprofile">
+															<div class="userProfileImg"><label
+																	class="custom-file-upload"><span
+																		class="filetext"><img
+																			src="data:image/png></span><span class="
+																			plusicon"><i class="fa fa-plus"
+																			aria-hidden="true"></i><input
+																			type="file"></span></label>
+																<div class="col-md-12 errorClass error_div"></div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="input_field_inner"><label
+														class="input_label input_label_color">Email</label><span
+														class=""></span><input name="email" type="text"
+														class="input__fields_property" id="worker_email" maxlength=""
+														value="">
+													<div class="col-md-12 errorClass error_div"></div>
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="input_field_inner"><label
+														class="input_label input_label_color">Phone number</label><span
+														class=""></span><input name="phone_number" type="text"
+														class="input__fields_property" id="worker_phone_number"
+														maxlength="" value="">
+													<div class="col-md-12 errorClass error_div"></div>
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="row">
+													<div class="col-md-6 removepr">
+														<div class="dropdowninnerbox"><label>Entreprise</label>
+															<div>
+																<div class=" css-2b097c-container"
+																	id="worker_enterprise">
+																	<div class=" css-yk16xz-control">
+																		<div class=" css-1hwfws3">
+																			<div class=" css-1wa3eu0-placeholder"></div>
+																			<div class="css-1g6gooi">
+																				<div class=""
+																					style="display: inline-block;">
+																					<input autocapitalize="none"
+																						autocomplete="off"
+																						autocorrect="off"
+																						id="react-select-5-input"
+																						spellcheck="false" tabindex="0"
+																						type="text"
+																						aria-autocomplete="list"
+																						value=""
+																						style="box-sizing: content-box; width: 2px; background: 0px center; border: 0px; font-size: inherit; opacity: 1; outline: 0px; padding: 0px; color: inherit;">
+																					<div
+																						style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 13px; font-family: Poppins-Regular; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;">
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class=" css-1wy0on6"><span
+																				class=" css-1okebmr-indicatorSeparator"></span>
+																			<div aria-hidden="true"
+																				class=" css-tlfecz-indicatorContainer">
+																				<svg height="20" width="20"
+																					viewBox="0 0 20 20"
+																					aria-hidden="true" focusable="false"
+																					class="css-19bqh2r">
+																					<path
+																						d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z">
+																					</path>
+																				</svg>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-12 errorClass error_div"></div>
+														</div>
+													</div>
+													<div class="col-md-6 removepl">
+														<div class="dropdowninnerbox"><label>Department</label>
+															<div>
+																<div class=" css-2b097c-container"
+																	id="worker_department">
+																	<div class=" css-yk16xz-control">
+																		<div class=" css-1hwfws3">
+																			<div class=" css-1wa3eu0-placeholder"></div>
+																			<div class="css-1g6gooi">
+																				<div class=""
+																					style="display: inline-block;">
+																					<input autocapitalize="none"
+																						autocomplete="off"
+																						autocorrect="off"
+																						id="react-select-6-input"
+																						spellcheck="false" tabindex="0"
+																						type="text"
+																						aria-autocomplete="list"
+																						value=""
+																						style="box-sizing: content-box; width: 2px; background: 0px center; border: 0px; font-size: inherit; opacity: 1; outline: 0px; padding: 0px; color: inherit;">
+																					<div
+																						style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 13px; font-family: Poppins-Regular; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;">
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class=" css-1wy0on6"><span
+																				class=" css-1okebmr-indicatorSeparator"></span>
+																			<div aria-hidden="true"
+																				class=" css-tlfecz-indicatorContainer">
+																				<svg height="20" width="20"
+																					viewBox="0 0 20 20"
+																					aria-hidden="true" focusable="false"
+																					class="css-19bqh2r">
+																					<path>
+																					</path>
+																				</svg>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-12 errorClass error_div"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="row">
+													<div class="col-md-12">
+														<div class="dropdowninnerbox"><label>Team</label>
+															<div>
+																<div class=" css-2b097c-container" id="worker_team">
+																	<div class=" css-yk16xz-control">
+																		<div class=" css-1hwfws3">
+																			<div class=" css-1wa3eu0-placeholder"></div>
+																			<div class="css-1g6gooi">
+																				<div class=""
+																					style="display: inline-block;">
+																					<input autocapitalize="none"
+																						autocomplete="off"
+																						autocorrect="off"
+																						id="react-select-7-input"
+																						spellcheck="false" tabindex="0"
+																						type="text"
+																						aria-autocomplete="list"
+																						value=""
+																						style="box-sizing: content-box; width: 2px; background: 0px center; border: 0px; font-size: inherit; opacity: 1; outline: 0px; padding: 0px; color: inherit;">
+																					<div
+																						style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 13px; font-family: Poppins-Regular; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;">
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class=" css-1wy0on6"><span
+																				class=" css-1okebmr-indicatorSeparator"></span>
+																			<div aria-hidden="true"
+																				class=" css-tlfecz-indicatorContainer">
+																				<svg height="20" width="20"
+																					viewBox="0 0 20 20"
+																					aria-hidden="true" focusable="false"
+																					class="css-19bqh2r">
+																					<path>
+																					</path>
+																				</svg>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-12 errorClass error_div"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="row">
+													<div class="col-md-6 removepr">
+														<div class="dropdowninnerbox"><label>Designation</label>
+															<div>
+																<div class=" css-2b097c-container" id="worker_function">
+																	<div class=" css-yk16xz-control">
+																		<div class=" css-1hwfws3">
+																			<div class=" css-1wa3eu0-placeholder"></div>
+																			<div class="css-1g6gooi">
+																				<div class=""
+																					style="display: inline-block;">
+																					<input autocapitalize="none"
+																						autocomplete="off"
+																						autocorrect="off"
+																						id="react-select-8-input"
+																						spellcheck="false" tabindex="0"
+																						type="text"
+																						aria-autocomplete="list"
+																						value=""
+																						style="box-sizing: content-box; width: 2px; background: 0px center; border: 0px; font-size: inherit; opacity: 1; outline: 0px; padding: 0px; color: inherit;">
+																					<div
+																						style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 13px; font-family: Poppins-Regular; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;">
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class=" css-1wy0on6"><span
+																				class=" css-1okebmr-indicatorSeparator"></span>
+																			<div aria-hidden="true"
+																				class=" css-tlfecz-indicatorContainer">
+																				<svg height="20" width="20"
+																					viewBox="0 0 20 20"
+																					aria-hidden="true" focusable="false"
+																					class="css-19bqh2r">
+																					<path>
+																					</path>
+																				</svg>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-12 errorClass error_div"></div>
+														</div>
+													</div>
+													<div class="col-md-6 removepl">
+														<div class="datepickerinnerbox"><label>Date of joining</label>
+															<div class="DatePicker " role="presentation"><input
+																	data-testid="datepicker-input" readonly="" name=""
+																	placeholder=" "
+																	class="DatePicker__input -ltr worker_datepicker"
+																	aria-label=" " value=""></div>
+															<div class="errorClass error_div"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-12 text-center topspace"><button type="button" class="modbtn"
+												id="worker_add_next_button_id">Next</button></div>
+									</div>
+									<div class=" secondinformation">
+										<div class="innerbodydimension">
+											<div class="col-md-12">
+												<div class="dropdowninnerbox"><label>Type of Contract</label>
+													<div>
+														<div class=" css-2b097c-container" id="worker_type_of_contract">
+															<div class=" css-yk16xz-control">
+																<div class=" css-1hwfws3">
+																	<div class=" css-1wa3eu0-placeholder"></div>
+																	<div class="css-1g6gooi">
+																		<div class="" style="display: inline-block;">
+																			<input autocapitalize="none"
+																				autocomplete="off" autocorrect="off"
+																				id="react-select-9-input"
+																				spellcheck="false" tabindex="0"
+																				type="text" aria-autocomplete="list"
+																				value=""
+																				style="box-sizing: content-box; width: 2px; background: 0px center; border: 0px; font-size: inherit; opacity: 1; outline: 0px; padding: 0px; color: inherit;">
+																			<div
+																				style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 13px; font-family: Poppins-Regular; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;">
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class=" css-1wy0on6"><span
+																		class=" css-1okebmr-indicatorSeparator"></span>
+																	<div aria-hidden="true"
+																		class=" css-tlfecz-indicatorContainer"><svg
+																			height="20" width="20" viewBox="0 0 20 20"
+																			aria-hidden="true" focusable="false"
+																			class="css-19bqh2r">
+																			<path>
+																			</path>
+																		</svg></div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="errorClass error_div"></div>
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="row">
+													<div class="col-md-6 removepr">
+														<div class="dropdowninnerbox"><label>Type of worker</label>
+															<div>
+																<div class=" css-2b097c-container" id="worker_type_of">
+																	<div class=" css-yk16xz-control">
+																		<div class=" css-1hwfws3">
+																			<div class=" css-1wa3eu0-placeholder"></div>
+																			<div class="css-1g6gooi">
+																				<div class=""
+																					style="display: inline-block;">
+																					<input autocapitalize="none"
+																						autocomplete="off"
+																						autocorrect="off"
+																						id="react-select-10-input"
+																						spellcheck="false" tabindex="0"
+																						type="text"
+																						aria-autocomplete="list"
+																						value=""
+																						style="box-sizing: content-box; width: 2px; background: 0px center; border: 0px; font-size: inherit; opacity: 1; outline: 0px; padding: 0px; color: inherit;">
+																					<div
+																						style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 13px; font-family: Poppins-Regular; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;">
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class=" css-1wy0on6"><span
+																				class=" css-1okebmr-indicatorSeparator"></span>
+																			<div aria-hidden="true"
+																				class=" css-tlfecz-indicatorContainer">
+																				<svg height="20" width="20"
+																					viewBox="0 0 20 20"
+																					aria-hidden="true" focusable="false"
+																					class="css-19bqh2r">
+																					<path>
+																					</path>
+																				</svg>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="errorClass error_div"></div>
+														</div>
+													</div>
+													<div class="col-md-6 removepl">
+														<div class="input_field_inner"><label
+																class="input_label input_label_color">Working
+																Time</label><span class=""></span><input
+																name="hourlyRegime" type="text"
+																class="input__fields_property" id="workingtime"
+																maxlength="" value="">
+															<div class="col-md-12 errorClass error_div"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="dropdowninnerbox"><label>Role</label>
+													<div>
+														<div class=" css-2b097c-container" id="worker_role">
+															<div class=" css-yk16xz-control">
+																<div class=" css-1hwfws3">
+																	<div class=" css-1wa3eu0-placeholder"></div>
+																	<div class="css-1g6gooi">
+																		<div class="" style="display: inline-block;">
+																			<input autocapitalize="none"
+																				autocomplete="off" autocorrect="off"
+																				id="react-select-11-input"
+																				spellcheck="false" tabindex="0"
+																				type="text" aria-autocomplete="list"
+																				value=""
+																				style="box-sizing: content-box; width: 2px; background: 0px center; border: 0px; font-size: inherit; opacity: 1; outline: 0px; padding: 0px; color: inherit;">
+																			<div
+																				style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 13px; font-family: Poppins-Regular; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;">
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class=" css-1wy0on6"><span
+																		class=" css-1okebmr-indicatorSeparator"></span>
+																	<div aria-hidden="true"
+																		class=" css-tlfecz-indicatorContainer"><svg
+																			height="20" width="20" viewBox="0 0 20 20"
+																			aria-hidden="true" focusable="false"
+																			class="css-19bqh2r">
+																			<path>
+																			</path>
+																		</svg></div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="errorClass error_div"></div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-12 text-center topspace"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> -->

@@ -19,7 +19,6 @@ class UserController < ApplicationController
     user_update_response = User.update_user(params)
     render :json => user_update_response
   end
-
   def delete_user
     user_delete_response = User.delete_user(params)
     render :json =>user_delete_response   
@@ -27,29 +26,28 @@ class UserController < ApplicationController
   def user_details
     user_details_response = User.show_user(params)
     render :json => user_details_response 
-end
-def get_entreprise
-  entreprise_response = Entreprise.show_entreprise(params)
-  render :json => entreprise_response
-end
-def select_department
-  @department = Department.department(params)
-  render :json => @department
-end
+  end
+  def get_entreprise
+    entreprise_response = Entreprise.show_entreprise(params)
+    render :json => entreprise_response
+  end
+  def select_department
+    @department = Department.department(params)
+    render :json => @department
+  end
 
-def get_team
-  team_response = Team.show_team(params)
-  render :json => team_response
-end
+  def get_team
+    team_response = Team.show_team(params)
+    render :json => team_response
+  end
 
-def get_designation
-  team_response = Designation.show_designation(params)
-  render :json => team_response
-end
+  def get_designation
+    team_response = Designation.show_designation(params)
+    render :json => team_response
+  end
 
-def select_role
-  user_role = Role.all_role
-  render :json => user_role
-end
-
+  def select_role
+    user_role = Role.all_role
+    render :json => user_role
+  end
 end
